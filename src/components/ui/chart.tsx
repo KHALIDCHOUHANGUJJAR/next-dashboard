@@ -5,7 +5,7 @@ import * as RechartsPrimitive from "recharts";
 
 import { cn } from "@/lib/utils";
 
-// Format: { THEME_NAME: CSS_SELECTOR }
+// Format: { THEMENAME: CSSSELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
 
 export type ChartConfig = {
@@ -52,7 +52,7 @@ const ChartContainer = React.forwardRef<
         data-chart={chartId}
         ref={ref}
         className={cn(
-          "flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none",
+          "flex aspect-video justify-center text-xs [&.recharts-cartesian-axis-ticktext]:fill-muted-foreground [&.recharts-cartesian-gridline[stroke='#ccc']]:stroke-border/50 [&.recharts-curve.recharts-tooltip-cursor]:stroke-border [&.recharts-dot[stroke='#fff']]:stroke-transparent [&.recharts-layer]:outline-none [&.recharts-polar-grid[stroke='#ccc']]:stroke-border [&.recharts-radial-bar-background-sector]:fill-muted [&.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&.recharts-reference-line[stroke='#ccc']]:stroke-border [&.recharts-sector[stroke='#fff']]:stroke-transparent [&.recharts-sector]:outline-none [&.recharts-surface]:outline-none",
           className
         )}
         {...props}
@@ -69,7 +69,7 @@ ChartContainer.displayName = "Chart";
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([_, config]) => config.theme || config.color
+    ([, config]) => config.theme || config.color
   );
 
   if (!colorConfig.length) {
@@ -79,7 +79,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
+        html: Object.entries(THEMES)
           .map(
             ([theme, prefix]) => `
 ${prefix} [data-chart=${id}] {

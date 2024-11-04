@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from 'next/image';
 
 const chartDataSets = [
   [
@@ -97,8 +98,10 @@ const Page = () => {
           </Card>
         ))}
       </div>
-      <img src="/Assets/images/Chart.png" alt="image" />
-      <img src="/Assets/images/Frame 26.png" alt="image" />
+   
+
+<Image src="/Assets/images/Chart.png" alt="description" width={950} height={700} />
+<Image src="/Assets/images/Frame 26.png" alt="description" width={950} height={500} />
     </div>
   );
 };

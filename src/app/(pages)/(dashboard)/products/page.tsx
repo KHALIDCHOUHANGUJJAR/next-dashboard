@@ -11,12 +11,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
 
 const Products = () => {
   const [pro, setPro] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
+
+
+
+
+  
   const fetchData = async () => {
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
@@ -49,11 +56,14 @@ const Products = () => {
                 <CardDescription>{product.category}</CardDescription>
               </CardHeader>
               <CardContent className="flex-1">
-                <img
+                <Image
                   src={image}
                   alt={title}
+                  width={500} 
+                  height={200} 
                   className="w-full h-52 object-cover"
                 />
+
                 <p className="mt-2">Price: ${price}</p>
                 <p>{description.slice(0, 100)} .......</p>
               </CardContent>
